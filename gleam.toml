@@ -1,0 +1,12 @@
+name = "bitsandbobs"
+version = "1.0.0"
+
+description = "A collection of functions for working with BitArray's"
+licences = ["Apache-2.0"]
+repository = { type = "github", user = "BradBot1", repo = "gleam_bitsandbobs" }
+
+[dependencies]
+gleam_stdlib = ">= 0.34.0 and < 2.0.0"
+
+[dev-dependencies]
+gleeunit = ">= 1.0.0 and < 2.0.0"
