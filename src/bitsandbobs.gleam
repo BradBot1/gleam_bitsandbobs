@@ -4,6 +4,7 @@ import gleam/list
 /// Splits a BitArray into a list of BitArrays of the specified size
 /// Will leave trailing bits in the last BitArray if the BitArray is not evenly divisible by the specified size
 /// If the specified size is greater than the BitArray size, the BitArray will be returned as a singleton list
+@external(javascript, "./bitsandbobs_ffi.mjs", "split_every_x_bits")
 pub fn split_every_x_bits(bitarray: BitArray, every: Int) -> List(BitArray) {
   case bitarray {
     <<chunk:bits-size(every), rest:bits>> ->
@@ -17,6 +18,7 @@ pub fn split_every_x_bits(bitarray: BitArray, every: Int) -> List(BitArray) {
 }
 
 /// Determines if a BitArray is at least the specified size, will return negatives as False
+@external(javascript, "./bitsandbobs_ffi.mjs", "is_atleast_x_bits")
 pub fn is_atleast_x_bits(bitarray: BitArray, mininum: Int) -> Bool {
   case bitarray {
     <<_:size(mininum), _:bits>> -> True
@@ -38,6 +40,7 @@ pub fn bit_size_x(bitarray: BitArray, starting_size: Int) -> Int {
   }
 }
 
+@external(javascript, "./bitsandbobs_ffi.mjs", "bit_size_recursive")
 fn bit_size_recursive(bitarray: BitArray, read_size: Int) -> Int {
   case bitarray {
     <<_:size(read_size), rest:bits>> ->
@@ -73,4 +76,9 @@ pub fn zip(
 /// Pads the start of a bitarray with zeros
 pub fn pad(bitarray: BitArray, amount_of_padding: Int) -> BitArray {
   bit_array.append(<<0:size(amount_of_padding)>>, bitarray)
+}
+
+@external(javascript, "./bitsandbobs_ffi.mjs", "bits_required_to_represent_x_bits")
+pub fn bits_required_to_represent_x_bits(int: Int) -> Int {
+  int
 }

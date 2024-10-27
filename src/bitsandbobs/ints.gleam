@@ -23,6 +23,7 @@ pub fn to_bitarray(int: Int) -> BitArray {
 
 /// Converts a BitArray to an Int
 /// A short hand for `bitsandbobs.bit_size` into `from_x_bits`
+@external(javascript, "../bitsandbobs_ffi.mjs", "int_from_bitarray")
 pub fn from_bitarray(bitarray: BitArray) -> Int {
   let assert Ok(int) =
     bitarray |> bitsandbobs.bit_size |> from_x_bits(bitarray, _)
@@ -31,6 +32,7 @@ pub fn from_bitarray(bitarray: BitArray) -> Int {
 
 /// Reads a BitArray into an Int by reading the specified number of bits
 /// If the BitArray is not long enough, returns an Error
+@external(javascript, "../bitsandbobs_ffi.mjs", "int_from_x_bits")
 pub fn from_x_bits(bitarray: BitArray, bit_count: Int) -> Result(Int, Nil) {
   case bitarray {
     <<ret:size(bit_count), _rest:bits>> -> Ok(ret)
