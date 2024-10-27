@@ -25,7 +25,10 @@ pub fn from_bitarray_test() -> Nil {
 }
 
 pub fn from_x_test() -> Nil {
-  <<5:32>> |> ints.from_x_bits(32) |> should.equal(Ok(5))
+  let x = <<5:32>> |> ints.from_x_bits(32)
+  x |> should.be_ok
+  let assert Ok(x) = x
+  x |> should.equal(5)
 }
 
 @target(erlang)
