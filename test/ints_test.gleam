@@ -16,27 +16,27 @@ import gleam/bit_array
 import gleam/list
 import gleeunit/should
 
-pub fn to_bitarray_test() {
+pub fn to_bitarray_test() -> Nil {
   5 |> ints.to_bitarray |> should.equal(<<5>>)
 }
 
-pub fn from_bitarray_test() {
+pub fn from_bitarray_test() -> Nil {
   <<5:32>> |> ints.from_bitarray |> should.equal(5)
 }
 
-pub fn from_x_test() {
+pub fn from_x_test() -> Nil {
   <<5:32>> |> ints.from_x_bits(32) |> should.equal(Ok(5))
 }
 
-pub fn from_x_different_size_test() {
+pub fn from_x_different_size_test() -> Nil {
   <<4095:12>> |> ints.from_x_bits(6) |> should.equal(Ok(63))
 }
 
-pub fn from_x_invalid_size_test() {
+pub fn from_x_invalid_size_test() -> Nil {
   <<5:32>> |> ints.from_x_bits(64) |> should.be_error
 }
 
-pub fn map_test() {
+pub fn map_test() -> Nil {
   list.range(0, 10)
   |> list.map(fn(x) { <<x:8>> })
   |> bit_array.concat
@@ -44,7 +44,7 @@ pub fn map_test() {
   |> should.equal(<<0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20>>)
 }
 
-pub fn map_every_x_bits_test() {
+pub fn map_every_x_bits_test() -> Nil {
   list.range(0, 10)
   |> list.map(fn(x) { <<x:32>> })
   |> bit_array.concat
@@ -54,7 +54,7 @@ pub fn map_every_x_bits_test() {
   >>)
 }
 
-pub fn map_every_x_bits_dif_test() {
+pub fn map_every_x_bits_dif_test() -> Nil {
   list.range(0, 10)
   |> list.map(fn(x) { <<x:32>> })
   |> bit_array.concat
@@ -65,13 +65,13 @@ pub fn map_every_x_bits_dif_test() {
   >>)
 }
 
-pub fn add_8_test() {
+pub fn add_8_test() -> Nil {
   ints.add(<<16:8, 5:8>>, <<4:8>>, 8)
   |> should.equal(<<16:8, 9:8>>)
 }
 
 // the public example
-pub fn demo_test() {
+pub fn demo_test() -> Nil {
   <<5:32, 10:32>>
   |> ints.map_every_x_bits(32, fn(x) { x * 2 })
   |> ints.add(<<40:32, 45:32>>, 32)

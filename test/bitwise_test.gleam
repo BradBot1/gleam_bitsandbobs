@@ -14,32 +14,32 @@
 import bitsandbobs/bitwise
 import gleeunit/should
 
-pub fn bitwise_and_test() {
+pub fn bitwise_and_test() -> Nil {
   bitwise.and(<<5:8>>, <<4:8>>)
   |> should.equal(<<4:8>>)
 }
 
-pub fn bitwise_or_test() {
+pub fn bitwise_or_test() -> Nil {
   bitwise.or(<<5:8>>, <<4:8>>)
   |> should.equal(<<5:8>>)
 }
 
-pub fn bitwise_xor_test() {
+pub fn bitwise_xor_test() -> Nil {
   bitwise.xor(<<5:8>>, <<4:8>>)
   |> should.equal(<<1:8>>)
 }
 
-pub fn bitwise_not_test() {
+pub fn bitwise_not_test() -> Nil {
   bitwise.not(<<5:8>>)
   |> should.equal(<<250:8>>)
 }
 
-pub fn bitwise_left_shift_test() {
+pub fn bitwise_left_shift_test() -> Nil {
   bitwise.lshift(<<5:8>>, 1)
   |> should.equal(<<10:8>>)
 }
 
-pub fn bitwise_right_shift_test() {
+pub fn bitwise_right_shift_test() -> Nil {
   bitwise.rshift(<<5:8>>, 1)
   |> should.equal(<<2:8>>)
 }
