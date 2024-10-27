@@ -160,3 +160,21 @@ pub fn pad_test() -> Nil {
   bitsandbobs.pad(<<5:8>>, 24)
   |> should.equal(<<0:8, 0:8, 0:8, 5:8>>)
 }
+
+@target(erlang)
+pub fn bits_required_to_represent_x_bits_test() -> Nil {
+  let a = list.range(0, 10)
+  a
+  |> list.zip(a |> list.map(bitsandbobs.bits_required_to_represent_x_bits))
+  |> list.each(fn(x) {
+    let #(a, b) = x
+    a |> should.equal(b)
+  })
+}
+
+@target(javascript)
+pub fn bits_required_to_represent_x_bits_test() -> Nil {
+  list.range(0, 10)
+  |> list.map(bitsandbobs.bits_required_to_represent_x_bits)
+  |> should.equal([0, 8, 8, 8, 8, 8, 8, 8, 8, 16, 16])
+}
