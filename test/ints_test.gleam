@@ -28,6 +28,7 @@ pub fn from_x_test() -> Nil {
   <<5:32>> |> ints.from_x_bits(32) |> should.equal(Ok(5))
 }
 
+@target(erlang)
 pub fn from_x_different_size_test() -> Nil {
   <<4095:12>> |> ints.from_x_bits(6) |> should.equal(Ok(63))
 }

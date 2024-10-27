@@ -72,26 +72,32 @@ pub fn bit_size_0_test() -> Nil {
   <<>> |> bitsandbobs.bit_size |> should.equal(0)
 }
 
+@target(erlang)
 pub fn bit_size_1_test() -> Nil {
   <<2:1>> |> bitsandbobs.bit_size |> should.equal(1)
 }
 
+@target(erlang)
 pub fn bit_size_2_test() -> Nil {
   <<2:2>> |> bitsandbobs.bit_size |> should.equal(2)
 }
 
+@target(erlang)
 pub fn bit_size_3_test() -> Nil {
   <<2:3>> |> bitsandbobs.bit_size |> should.equal(3)
 }
 
+@target(erlang)
 pub fn bit_size_4_test() -> Nil {
   <<5:4>> |> bitsandbobs.bit_size |> should.equal(4)
 }
 
+@target(erlang)
 pub fn bit_size_5_test() -> Nil {
   <<5:5>> |> bitsandbobs.bit_size |> should.equal(5)
 }
 
+@target(erlang)
 pub fn bit_size_7_test() -> Nil {
   <<5:7>> |> bitsandbobs.bit_size |> should.equal(7)
 }
