@@ -16,10 +16,6 @@ import gleam/bit_array
 import gleam/int
 import gleam/list
 
-pub type Error {
-  InvalidBitCount(count: Int)
-}
-
 /// Converts an Int to a BitArray
 pub fn to_bitarray(int: Int) -> BitArray {
   <<int>>
@@ -34,10 +30,11 @@ pub fn from_bitarray(bitarray: BitArray) -> Int {
 }
 
 /// Reads a BitArray into an Int by reading the specified number of bits
-pub fn from_x_bits(bitarray: BitArray, bit_count: Int) -> Result(Int, Error) {
+/// If the BitArray is not long enough, returns an Error
+pub fn from_x_bits(bitarray: BitArray, bit_count: Int) -> Result(Int, Nil) {
   case bitarray {
     <<ret:size(bit_count), _rest:bits>> -> Ok(ret)
-    _ -> Error(InvalidBitCount(bit_count))
+    _ -> Error(Nil)
   }
 }
 
