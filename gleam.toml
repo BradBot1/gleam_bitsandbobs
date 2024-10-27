@@ -1,7 +1,7 @@
 name = "bitsandbobs"
 version = "1.0.0"
 
-description = "A collection of functions for working with BitArray's"
+description = "A collection of functions for working with BitArray's in gleam"
 licences = ["Apache-2.0"]
 repository = { type = "github", user = "BradBot1", repo = "gleam_bitsandbobs" }
 
